@@ -1,0 +1,22 @@
+<h2>Mixar Dois Arquivos MP3</h2>
+
+<input 
+    type="file" 
+    multiple 
+    accept=".mp3" 
+    (change)="onFileSelected($event)"
+>
+
+<p *ngIf="selectedFiles.length > 0">
+    Arquivos selecionados: **{{ selectedFiles.length }} de 2**
+</p>
+<p *ngIf="selectedFiles.length > 2" class="error">
+    Por favor, selecione no máximo dois arquivos.
+</p>
+
+<button 
+    (click)="uploadFiles()" 
+    [disabled]="selectedFiles.length !== 2"
+>
+    Mixar e Baixar Áudio
+</button>
