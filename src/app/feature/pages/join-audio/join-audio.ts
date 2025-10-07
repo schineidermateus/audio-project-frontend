@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as FileSaver from 'file-saver'; 
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-join-audio',
@@ -36,7 +36,7 @@ export class JoinAudioComponent {
       .subscribe({
         next: (blob: Blob) => {
           // Usa o file-saver para salvar o arquivo baixado
-          FileSaver.saveAs(blob, `audio-junto-${Date.now()}.mp3`);
+          saveAs(blob, `audio-junto-${Date.now()}.mp3`);
           alert('Arquivos juntados e download iniciado!');
         },
         error: (err) => {

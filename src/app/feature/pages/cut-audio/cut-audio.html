@@ -1,1 +1,22 @@
-<p>cut-audio works!</p>
+<h2>Cortar Arquivo MP3</h2>
+
+<input type="file" accept=".mp3" (change)="onFileSelected($event)">
+
+<div>
+    <label for="startTime">Início do Corte (segundos):</label>
+    <input type="number" id="startTime" [(ngModel)]="startTime" placeholder="Ex: 15.5">
+</div>
+
+<div>
+    <label for="duration">Duração do Corte (segundos):</label>
+    <input type="number" id="duration" [(ngModel)]="duration" placeholder="Ex: 5">
+</div>
+
+<p *ngIf="selectedFile">Arquivo selecionado: {{ selectedFile.name }}</p>
+
+<button 
+    (click)="uploadAndCut()" 
+    [disabled]="!selectedFile || !startTime || !duration"
+>
+    Cortar e Baixar Segmento
+</button>
