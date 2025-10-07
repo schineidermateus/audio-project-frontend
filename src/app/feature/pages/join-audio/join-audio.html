@@ -1,0 +1,11 @@
+<h2>Juntar Múltiplos Arquivos MP3</h2>
+
+<input type="file" multiple accept=".mp3" (change)="onFileSelected($event)">
+
+@if (selectedFiles.length > 0) {    
+    <p>Arquivos selecionados: {{ selectedFiles.length }}</p>
+}
+
+<button (click)="uploadFiles()" [disabled]="selectedFiles.length < 2">
+    Juntar e Baixar Áudio
+</button>
