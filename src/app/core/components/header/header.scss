@@ -1,17 +1,12 @@
 @use '../../../../styles/variables' as *;
 @use 'sass:color';
 
-// Definição de cores base (pode ser movida para um arquivo de variáveis globais)
-$primary-color: #3700FF;
-$text-color-light: #f3f4f6;
-$text-color-dark: #333;
-$link-color: #4b5563;
 $border-color: #e0e0e0;
 
 .app-header {
   min-height: 63px;
   border-bottom: 1px solid $border-color;
-  position: sticky; // Opcional: mantém o header fixo no topo
+  // position: sticky; // Opcional: mantém o header fixo no topo
   top: 0;
   z-index: 1000;
 }

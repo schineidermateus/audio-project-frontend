@@ -1,26 +1,31 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { saveAs } from 'file-saver';
+import { AudioService } from '../services/audio-service';
 
 @Component({
   selector: 'app-mix-audio',
   imports: [
-    
   ],
   templateUrl: './mix-audio.html',
   styleUrl: './mix-audio.scss'
 })
 export class MixAudioComponent {
-
   selectedFiles: File[] = [];
-  private API_URL = '/api/mix';
 
-  private readonly http$ = inject(HttpClient);
+  readonly titulo = 'Mixar';
+
+  private readonly service$ = inject(AudioService);
 
   onFileSelected(event: any): void {
     // Limita a seleção a no máximo 2 arquivos
     const files = Array.from(event.target.files);
     this.selectedFiles = files.slice(0, 2) as File[];
+  }
+
+  removeFile(index: number): void {
+    if (index >= 0 && index < this.selectedFiles.length) {
+      this.selectedFiles.splice(index, 1);
+    }
   }
 
   uploadFiles(): void {
@@ -29,23 +34,6 @@ export class MixAudioComponent {
       return;
     }
 
-    const formData = new FormData();
-    
-    // Adiciona os dois arquivos ao FormData com o nome 'mp3Files'
-    this.selectedFiles.forEach(file => {
-      formData.append('mp3Files', file, file.name);
-    });
-
-    this.http$.post(this.API_URL, formData, { responseType: 'blob' })
-      .subscribe({
-        next: (blob: Blob) => {
-          saveAs(blob, `audio-mixado-${Date.now()}.mp3`);
-          alert('Mixagem concluída e download iniciado!');
-        },
-        error: (err) => {
-          console.error('Erro ao mixar áudios:', err);
-          alert('Ocorreu um erro no processamento da mixagem.');
-        }
-      });
+    this.service$.uploadAndMixFiles(this.selectedFiles);
   }
 }
