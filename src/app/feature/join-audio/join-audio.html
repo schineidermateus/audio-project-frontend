@@ -66,8 +66,10 @@
             </button>
         </div>
 
-        <div class="mt-6 text-center text-sm text-gray-500">
-            É necessário selecionar no mínimo 2 faixas.
-        </div>
+        @if (selectedFiles.length < 2) {
+            <div class="mt-6 text-center text-sm text-gray-500">
+                É necessário selecionar no mínimo 2 faixas.
+            </div>
+        }
     </div>
 </div>
