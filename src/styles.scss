@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@use './styles/variables' as var; 
+
+// --- ESTILOS GLOBAIS (APLICADO AO BODY/HTML) ---
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: var.$font-family-sans;
+    color: var.$color-text-dark;
+    background-color: var.$color-bg-light;
+}
+
+// Fundo com os gradientes radiais, utilizando as variáveis de cor
+body {
+    background: 
+        // Radial 1: Azul vibrante (Superior Esquerdo)
+        radial-gradient(circle at 10% 10%, rgba(var.$color-primary, 0.25) 0%, rgba(var.$color-bg-light, 0) 78%),
+        // Radial 2: Amarelo (Superior Direito)
+        radial-gradient(circle at 90% 10%, rgba(var.$color-secondary, 0.25) 0%, rgba(var.$color-bg-light, 0) 65%),
+        // Cor de Fundo Sólida
+        var.$color-bg-light;
+}
+
+// Estilo para o container principal (onde o router-outlet está)
+.main-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var.$space-xl var.$space-md; 
+    /* Calcula a altura mínima removendo a altura do Header e do Footer (se assumirmos 80px) */
+    min-height: calc(100vh - 63px - 80px); 
+}

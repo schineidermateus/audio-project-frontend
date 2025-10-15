@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { JoinAudioComponent } from './feature/pages/join-audio/join-audio';
-import { CutAudioComponent } from './feature/pages/cut-audio/cut-audio';
-import { MixAudioComponent } from './feature/pages/mix-audio/mix-audio';
+import { HeaderComponent } from './core/components/header/header';
+import { FooterComponent } from './core/components/footer/footer';
+
 
 @Component({
   selector: 'app-root',
   imports: [
-    JoinAudioComponent,
-    CutAudioComponent,
-    MixAudioComponent
+    HeaderComponent,
+    RouterOutlet,
+    FooterComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

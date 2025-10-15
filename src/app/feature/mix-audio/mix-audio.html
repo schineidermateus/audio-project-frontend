@@ -7,12 +7,13 @@
     (change)="onFileSelected($event)"
 >
 
-<p *ngIf="selectedFiles.length > 0">
-    Arquivos selecionados: **{{ selectedFiles.length }} de 2**
-</p>
-<p *ngIf="selectedFiles.length > 2" class="error">
-    Por favor, selecione no máximo dois arquivos.
-</p>
+@if(selectedFiles.length > 0) {
+    <p>Arquivos selecionados: **{{ selectedFiles.length }} de 2**</p>
+}
+
+@if(selectedFiles.length > 2) {
+    <p class="error">Por favor, selecione no máximo dois arquivos.</p>
+}
 
 <button 
     (click)="uploadFiles()" 

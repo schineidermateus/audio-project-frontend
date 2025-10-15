@@ -1,0 +1,29 @@
+<header class="app-header">
+  <nav class="header-nav">
+    
+    <!-- Seção Esquerda: Logo e Links de Funcionalidade -->
+    <div class="nav-left">
+      <!-- Logo ou Título do App -->
+      <a routerLink="/" class="logo">
+        <span class="logo-title">Audio</span><span class="logo-subtitle">Tools</span>
+      </a>
+
+      <div class="nav-links">
+        @for (item of navItems; track item.path) {
+          <a [routerLink]="item.path" routerLinkActive="active" class="nav-link">
+            {{ item.label }}
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Seção Direita: Botões de Ação/Usuário -->
+    <div class="nav-right">
+      <!-- Botão Placeholder do Mock (ex: Alternar Tema) -->
+      <button class="action-btn" aria-label="Alternar Tema"></button> 
+      
+      <!-- Botão de Ação Primária (ex: Entrar/Login) -->
+      <button class="action-btn btn-primary">Entrar</button>
+    </div>
+  </nav>
+</header>

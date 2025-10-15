@@ -1,0 +1,112 @@
+@use '../../../../styles/variables' as *;
+@use 'sass:color';
+
+// Definição de cores base (pode ser movida para um arquivo de variáveis globais)
+$primary-color: #3700FF;
+$text-color-light: #f3f4f6;
+$text-color-dark: #333;
+$link-color: #4b5563;
+$border-color: #e0e0e0;
+
+.app-header {
+  min-height: 63px;
+  border-bottom: 1px solid $border-color;
+  position: sticky; // Opcional: mantém o header fixo no topo
+  top: 0;
+  z-index: 1000;
+}
+
+.header-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  min-height: 63px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 4rem; // Espaçamento entre Logo e Links
+}
+
+/* --- LOGO --- */
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  
+  .logo-title {
+    color: $primary-color;
+  }
+  
+  .logo-subtitle {
+    color: $text-color-dark;
+  }
+}
+
+/* --- LINKS DE NAVEGAÇÃO --- */
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+    color: $link-color;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 21px 0; // Padding vertical para alinhar a borda
+    transition: color 0.2s;
+    
+    /* Aplica o espaçamento de 38px entre os links */
+    &:not(:first-child) {
+      margin-left: 38px;
+    }
+
+    &:hover {
+      color: color.adjust($link-color, $lightness: -20%);
+    }
+
+    &.active {
+      color: $primary-color;
+      font-weight: 600;
+      border-bottom: 2px solid $primary-color;
+    }
+}
+
+/* --- BOTÕES DE AÇÃO --- */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  .action-btn {
+    border: none;
+    padding: 8px 16px;
+    border-radius: $border-radius-xl;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    
+    // Estilo para o botão placeholder (similar ao toggle do mock)
+    &:not(.btn-primary) {
+      background-color: #f3f4f6;
+      color: $text-color-dark;
+      width: 40px; // Apenas para o placeholder
+      height: 35px;
+      padding: 0;
+    }
+  }
+
+  .btn-primary {
+    background-color: $primary-color;
+    color: $text-color-light;
+
+    &:hover {
+      background-color: color.adjust($primary-color, $lightness: 10%);
+    }
+  }
+}
