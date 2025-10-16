@@ -22,12 +22,9 @@
             <p class="text-sm text-gray-400 mb-6">
                 (MP3, WAV, M4A, etc.)
             </p>
-
-            <!-- Botão Link/Input de Arquivos -->
             <label for="file-upload" class="cursor-pointer inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-150 ease-in-out">
                 Selecionar Arquivos
             </label>
-            <!-- O (change) chama a função onFileSelected() do seu controller -->
             <input id="file-upload" type="file" multiple class="hidden" (change)="onFileSelected($event)" accept=".mp3">
         </div>
 
@@ -40,8 +37,6 @@
                         <span class="truncate">{{ file.name }}</span>
                         <div class="flex items-center space-x-3">
                             <span class="text-gray-500">{{ (file.size / 1024 / 1024).toFixed(2) }} MB</span>
-                            
-                            <!-- Botão de Remover Arquivo (Lixeira) -->
                             <button (click)="removeFile($index)" 
                                     class="remove-btn text-red-500 hover:text-red-700 transition duration-150 p-1 rounded-full hover:bg-red-50"
                                     aria-label="Remover arquivo">

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { saveAs } from 'file-saver';
+import { AudioService } from '../services/audio-service';
 
 @Component({
   selector: 'app-cut-audio',
@@ -18,9 +19,8 @@ export class CutAudioComponent {
   selectedFile: File | null = null;
   startTime: number | null = null; // Tempo de início em segundos
   duration: number | null = null; // Duração em segundos
-  private API_URL = '/api/cut';
 
-  private readonly http$ = inject(HttpClient);
+  private readonly service$ = inject(AudioService);
 
   onFileSelected(event: any): void {
     const fileList: FileList = event.target.files;
@@ -44,16 +44,6 @@ export class CutAudioComponent {
     formData.append('startTime', this.startTime.toString());
     formData.append('duration', this.duration.toString());
 
-    this.http$.post(this.API_URL, formData, { responseType: 'blob' })
-      .subscribe({
-        next: (blob: Blob) => {
-          saveAs(blob, `audio-cortado-${this.startTime}-${this.duration}.mp3`);
-          alert('Corte de áudio concluído e download iniciado!');
-        },
-        error: (err) => {
-          console.error('Erro ao cortar áudio:', err);
-          alert('Ocorreu um erro no processamento do áudio.');
-        }
-      });
+    this.service$.uploadAndCut(this.selectedFile, this.startTime, this.duration);
   }
 }

@@ -9,10 +9,8 @@ export class AudioService {
   private readonly http$ = inject(HttpClient);
 
   private MIX_URL = '/api/mix';
-
   private JOIN_URL = '/api/join';
-
-
+  private CUT_URL = '/api/cut';
 
   uploadAndMixFiles(selectedFiles: Array<File>): void {
     const formData = new FormData();
@@ -34,7 +32,6 @@ export class AudioService {
     });
   }
 
-
   uploadAndJoinFiles(selectedFiles: File[]): void {
     const formData = new FormData();
 
@@ -53,6 +50,28 @@ export class AudioService {
         },
         error: (err) => {
           console.error('Erro ao juntar áudios:', err);
+          alert('Ocorreu um erro no processamento do áudio.');
+        }
+      });
+  }
+
+  uploadAndCut(selectedFile: File, startTime: number, duration: number): void {
+
+    const formData = new FormData();
+    // O Multer no backend espera 'mp3File'
+    formData.append('mp3File', selectedFile, selectedFile.name);
+    // Campos de texto para o corpo da requisição (req.body)
+    formData.append('startTime', startTime.toString());
+    formData.append('duration', duration.toString());
+
+    this.http$.post(this.CUT_URL, formData, { responseType: 'blob' })
+      .subscribe({
+        next: (blob: Blob) => {
+          saveAs(blob, `audio-cortado-${startTime}-${duration}.mp3`);
+          alert('Corte de áudio concluído e download iniciado!');
+        },
+        error: (err) => {
+          console.error('Erro ao cortar áudio:', err);
           alert('Ocorreu um erro no processamento do áudio.');
         }
       });

@@ -1,0 +1,36 @@
+<div class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    
+    <!-- Título Principal e Subtítulo -->
+    <div class="text-center mb-12">
+        <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight sm:text-6xl">
+            Sua Caixa de <span class="text-indigo-600">Ferramentas</span> de Áudio
+        </h1>
+        <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
+            Junte, corte e misture arquivos MP3 de forma simples e rápida, diretamente no seu navegador.
+        </p>
+    </div>
+
+    <!-- Seção de Cartões de Funcionalidade -->
+    <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+        @for (feature of features; track feature.title) {
+            <div class="bg-white p-6 shadow-xl rounded-xl border border-gray-100 transition transform hover:scale-[1.02] duration-300">
+                
+                <!-- Ícone da Funcionalidade -->
+                <div [class]="'w-12 h-12 flex items-center justify-center rounded-full mb-4 ' + feature.color">
+                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="feature.icon"></path>
+                    </svg>
+                </div>
+                
+                <h3 class="text-xl font-bold text-gray-900 mb-2">{{ feature.title }}</h3>
+                <p class="text-gray-600 mb-6">{{ feature.description }}</p>
+                
+                <!-- Botão de Ação -->
+                <a [routerLink]="feature.path" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition duration-150">
+                    Acessar Ferramenta
+                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </a>
+            </div>
+        }
+    </div>
+</div>
