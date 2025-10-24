@@ -13,13 +13,13 @@ export class FooterComponent {
   socialLinks = [
     { 
       name: 'GitHub', 
-      url: 'https://github.com/sch', 
-      iconPath: '/icons/github.svg' // Caminho corrigido para o SVG
+      url: 'https://github.com/schineidermateus', 
+      iconPath: '../../../icons/github.svg' // Caminho corrigido para o SVG
     },
     { 
       name: 'LinkedIn', 
-      url: 'https://linkedin.com/sch', 
-      iconPath: '/icons/in.svg' // Caminho corrigido para o SVG
+      url: 'https://www.linkedin.com/in/mateus-schineider', 
+      iconPath: '../../../icons/linkedin.svg' // Caminho corrigido para o SVG
     }
   ];
 
