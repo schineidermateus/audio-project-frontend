@@ -1,29 +1,27 @@
-<header class="app-header">
-  <nav class="header-nav">
+<header class="shadow-md shadow-gray-300/50">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[63px] flex justify-between items-center">
     
-    <!-- Seção Esquerda: Logo e Links de Funcionalidade -->
-    <div class="nav-left">
-      <!-- Logo ou Título do App -->
-      <a routerLink="/" class="logo">
-        <span class="logo-title">Audio</span><span class="logo-subtitle">Tools</span>
+    <div class="flex items-center h-full">
+      <a routerLink="/" class="logo mr-8 flex items-center">
+        <span class="logo-title text-xl font-bold">Audio</span><span class="logo-subtitle text-xl font-bold">Tools</span>
       </a>
 
-      <div class="nav-links">
+      <div class="nav-links h-full hidden sm:flex space-x-[38px] items-center">
         @for (item of navItems; track item.path) {
-          <a [routerLink]="item.path" routerLinkActive="active" class="nav-link">
+          <a [routerLink]="item.path" 
+             routerLinkActive="text-indigo-600 border-b-2 border-indigo-600 font-semibold" 
+             class="nav-link text-gray-700 hover:text-indigo-600 h-full flex items-center transition duration-200 text-sm"
+          >
             {{ item.label }}
           </a>
         }
       </div>
     </div>
 
-    <!-- Seção Direita: Botões de Ação/Usuário -->
-    <div class="nav-right">
-      <!-- Botão Placeholder do Mock (ex: Alternar Tema) -->
-      <button class="action-btn" aria-label="Alternar Tema"></button> 
+    <div class="flex items-center space-x-3">
+      <button class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 transition duration-200" aria-label="Alternar Tema"></button> 
       
-      <!-- Botão de Ação Primária (ex: Entrar/Login) -->
-      <button class="action-btn btn-primary">Entrar</button>
+      <button class="px-4 py-1.5 rounded-full bg-indigo-600 text-white font-semibold text-sm hover:bg-indigo-700 transition duration-200">Entrar</button>
     </div>
   </nav>
 </header>

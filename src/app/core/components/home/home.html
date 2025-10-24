@@ -1,36 +1,51 @@
-<div class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+<div class="home-container">
     
-    <!-- Título Principal e Subtítulo -->
-    <div class="text-center mb-12">
-        <h1 class="text-5xl font-extrabold text-gray-900 tracking-tight sm:text-6xl">
-            Sua Caixa de <span class="text-indigo-600">Ferramentas</span> de Áudio
+    <header class="text-center py-8">
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-900 leading-tight">
+            Processamento de Áudio Simplificado
         </h1>
-        <p class="mt-4 text-xl text-gray-600 max-w-3xl mx-auto">
-            Junte, corte e misture arquivos MP3 de forma simples e rápida, diretamente no seu navegador.
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            Escolha uma funcionalidade e comece a editar seus arquivos MP3 na hora, sem instalação.
         </p>
-    </div>
+    </header>
 
-    <!-- Seção de Cartões de Funcionalidade -->
-    <div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
-        @for (feature of features; track feature.title) {
-            <div class="bg-white p-6 shadow-xl rounded-xl border border-gray-100 transition transform hover:scale-[1.02] duration-300">
+    <section class="function-cards-grid grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        @for (card of functionCards; track card.path) {
+            <a [routerLink]="card.path"
+               class="bg-white p-6 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-1 border border-gray-100 flex flex-col items-start space-y-3 cursor-pointer">
                 
-                <!-- Ícone da Funcionalidade -->
-                <div [class]="'w-12 h-12 flex items-center justify-center rounded-full mb-4 ' + feature.color">
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="feature.icon"></path>
-                    </svg>
+                <div class="p-3 bg-indigo-50 text-indigo-600 rounded-full">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="card.icon"></path></svg>
                 </div>
-                
-                <h3 class="text-xl font-bold text-gray-900 mb-2">{{ feature.title }}</h3>
-                <p class="text-gray-600 mb-6">{{ feature.description }}</p>
-                
-                <!-- Botão de Ação -->
-                <a [routerLink]="feature.path" class="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-medium rounded-lg shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition duration-150">
-                    Acessar Ferramenta
-                    <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                </a>
-            </div>
+
+                <h2 class="text-xl font-semibold text-gray-800">{{ card.title }}</h2>
+                <p class="text-gray-500 text-sm flex-grow">{{ card.description }}</p>
+
+                <span class="text-indigo-600 font-medium mt-4">
+                    Iniciar &rarr;
+                </span>
+            </a>
         }
-    </div>
+    </section>
+
+    <section class="py-10">
+        <h2 class="text-3xl font-bold text-center mb-10 text-gray-800">Por Que Escolher o AudioTools?</h2>
+
+        <div class="feature-cards-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            @for (card of featureCards; track card.title) {
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 space-y-4">
+                    
+                    <div class="flex items-start space-x-4">
+                        <div class="p-2 mt-1 bg-gray-100 text-gray-700 rounded-lg flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" [attr.d]="card.icon"></path></svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-gray-900 leading-snug">{{ card.title }}</h3>
+                    </div>
+
+                    <p class="text-gray-500 text-sm">{{ card.description }}</p>
+                </div>
+            }
+        </div>
+    </section>
+
 </div>

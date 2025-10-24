@@ -7,17 +7,25 @@ import { Component } from '@angular/core';
   styleUrl: './footer.scss'
 })
 export class FooterComponent {
-  currentYear = new Date().getFullYear();
+  currentYear: number;
+  locationInfo: string;
 
   socialLinks = [
-    // GitHub: Aponta para um SVG simulado
-    { name: 'GitHub', url: 'https://github.com/seuperfil', icon: 'github' },
-    // LinkedIn: Aponta para um SVG simulado
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/seuperfil', icon: 'linkedin' },
+    { 
+      name: 'GitHub', 
+      url: 'https://github.com/sch', 
+      iconPath: '/icons/github.svg' // Caminho corrigido para o SVG
+    },
+    { 
+      name: 'LinkedIn', 
+      url: 'https://linkedin.com/sch', 
+      iconPath: '/icons/in.svg' // Caminho corrigido para o SVG
+    }
   ];
 
-  universityLink = {
-    name: 'Minha Universidade',
-    url: 'https://www.site-da-universidade.edu.br/'
-  };
+  constructor() {
+    this.currentYear = new Date().getFullYear();
+    // Informação de localização baseada no screenshot
+    this.locationInfo = `${this.currentYear} © PDRE, Av. dos Sabiás, 330; CP 29166-630, Morada de Laranjeiras, Espírito Santo, Brasil`;
+  }
 }
