@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AUDIO_ROUTES } from '../../constants/urls.constants';
+import { AUDIO_ROUTES } from '../../core/constants/urls.constants';
 
 @Component({
   selector: 'app-home',
@@ -37,8 +37,8 @@ export class HomeComponent {
 
   featureCards = [
     { 
-      title: 'Cortador de ringtones MP3 realmente rápido', 
-      description: 'A ferramenta oferece a você duas formas de cortar arquivos MP3: você pode selecionar a duração movendo os dois marcadores ou inserindo o tempo desejado em segundos.', 
+      title: 'Cortador de áudios MP3 realmente rápido', 
+      description: 'A ferramenta oferece a você uma forma de cortar audios, inserindo o tempo desejado em segundos.', 
       icon: 'M13.5 10.5L21 3m-1.5 0h6m0 0v6M3 10.5h6m0 0v6m1.5-4.5h-3m3 0V15m0 0v1.5m0-1.5h-1.5M10.5 21v-6m0 0h-3m3 0v1.5m0-1.5h1.5M19.5 21v-6m0 0h-3m3 0v1.5m0-1.5h1.5',
       iconPath: 'scissors'
     },
@@ -56,13 +56,13 @@ export class HomeComponent {
     },
     { 
       title: 'Mais Configurações', 
-      description: 'Com a ferramenta, você também pode aumentar e diminuir gradualmente o volume de sua trilha musical e convertê-la para qualquer formato desejado.', 
+      description: 'Com a ferramenta, você também pode sobrepor audios, gerando uma nova faixa única.', 
       icon: 'M10 21h4M3 10l9-7 9 7M12 3v18', 
       iconPath: 'gear'
     },
     { 
-      title: 'Compatível com Todos os Formatos de Áudio', 
-      description: 'O Cliideo permite que você trabalhe não apenas com MP3, mas também com OGG, WMA, WAV e outros formatos comuns.', 
+      title: 'Compatível com MP3', 
+      description: 'A plataforma permite que você trabalhe com MP3, sendo ele o formato de áudio mais comum no mercado.', 
       icon: 'M18 10h-2V7h2m-6 3h-2V7h2m-6 3H4V7h2m15 7H3V6h18a1 1 0 011 1v7zM12 21a9 9 0 100-18 9 9 0 000 18z', 
       iconPath: 'music' 
     },

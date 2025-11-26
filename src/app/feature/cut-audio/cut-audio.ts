@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { saveAs } from 'file-saver';
 import { AudioService } from '../services/audio-service';
 
 @Component({
@@ -38,9 +36,7 @@ export class CutAudioComponent {
     }
 
     const formData = new FormData();
-    // O Multer no backend espera 'mp3File'
     formData.append('mp3File', this.selectedFile, this.selectedFile.name);
-    // Campos de texto para o corpo da requisição (req.body)
     formData.append('startTime', this.startTime.toString());
     formData.append('duration', this.duration.toString());
 

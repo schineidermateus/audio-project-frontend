@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AUDIO_ROUTES } from '../../constants/urls.constants';
+import { AUDIO_ROUTES } from '../../../core/constants/urls.constants';
 
 @Component({
   selector: 'app-header',

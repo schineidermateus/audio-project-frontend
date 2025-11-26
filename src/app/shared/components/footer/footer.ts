@@ -14,18 +14,17 @@ export class FooterComponent {
     { 
       name: 'GitHub', 
       url: 'https://github.com/schineidermateus', 
-      iconPath: '../../../icons/github.svg' // Caminho corrigido para o SVG
+      iconPath: '/assets/github.svg'
     },
     { 
       name: 'LinkedIn', 
       url: 'https://www.linkedin.com/in/mateus-schineider', 
-      iconPath: '../../../icons/linkedin.svg' // Caminho corrigido para o SVG
+      iconPath: '/assets/linkedin.svg'
     }
   ];
 
   constructor() {
     this.currentYear = new Date().getFullYear();
-    // Informação de localização baseada no screenshot
     this.locationInfo = `${this.currentYear} © PDRE, Av. dos Sabiás, 330; CP 29166-630, Morada de Laranjeiras, Espírito Santo, Brasil`;
   }
 }
