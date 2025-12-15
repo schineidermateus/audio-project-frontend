@@ -21,8 +21,17 @@ export class JoinAudioComponent {
   }
 
   removeFile(index: number): void {
-    if (index >= 0 && index < this.selectedFiles.length) {
-      this.selectedFiles.splice(index, 1);
+    if(index < 0 || index >= this.selectedFiles.length) {
+      return;
+    }
+
+    const tempArray = this.selectedFiles;
+    this.selectedFiles = [];
+
+    for (let i = 0; i < tempArray.length; i++) {
+      if (i !== index) {
+        this.selectedFiles.push(tempArray[i]);
+      }
     }
   }
 
@@ -32,5 +41,6 @@ export class JoinAudioComponent {
       return;
     }
     this.service$.uploadAndJoinFiles(this.selectedFiles);
+    this.selectedFiles = [];
   }
 }

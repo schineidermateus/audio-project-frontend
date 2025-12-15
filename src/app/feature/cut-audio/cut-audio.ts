@@ -41,5 +41,6 @@ export class CutAudioComponent {
     formData.append('duration', this.duration.toString());
 
     this.service$.uploadAndCut(this.selectedFile, this.startTime, this.duration);
+    this.selectedFile = null;
   }
 }

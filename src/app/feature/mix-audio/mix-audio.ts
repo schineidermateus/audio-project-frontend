@@ -17,14 +17,33 @@ export class MixAudioComponent {
   private readonly service$ = inject(AudioService);
 
   onFileSelected(event: any): void {
-    // Limita a seleção a no máximo 2 arquivos
-    const files = Array.from(event.target.files);
-    this.selectedFiles = files.slice(0, 2) as File[];
+    if(this.selectedFiles.length > 2) {
+      alert('Só é possível selecionar 2 arquivos para mixage.');
+      return;
+    }
+
+    for (const file of Array.from(event.target.files) as File[]) {
+      if(this.selectedFiles.length >= 2) {
+        alert('Só é possível selecionar 2 arquivos para mixage.');
+        break;
+      }
+
+      this.selectedFiles.push(file);
+    }
   }
 
   removeFile(index: number): void {
-    if (index >= 0 && index < this.selectedFiles.length) {
-      this.selectedFiles.splice(index, 1);
+    if(index < 0 || index >= this.selectedFiles.length) {
+      return;
+    }
+    
+    const tempArray = this.selectedFiles;
+    this.selectedFiles = [];
+
+    for (let i = 0; i < tempArray.length; i++) {
+      if (i !== index) {
+        this.selectedFiles.push(tempArray[i]);
+      }
     }
   }
 
@@ -35,5 +54,6 @@ export class MixAudioComponent {
     }
 
     this.service$.uploadAndMixFiles(this.selectedFiles);
+    this.selectedFiles = [];
   }
 }
