@@ -30,6 +30,7 @@ export class MixAudioComponent {
 
       this.selectedFiles.push(file);
     }
+    event.target.value = '';
   }
 
   removeFile(index: number): void {

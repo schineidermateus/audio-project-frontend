@@ -18,16 +18,17 @@ export class JoinAudioComponent {
     for (const file of Array.from(event.target.files) as File[]) {
       this.selectedFiles.push(file);
     }
+    event.target.value = '';
   }
 
   removeFile(index: number): void {
-    if(index < 0 || index >= this.selectedFiles.length) {
+    if(index < 0) {
       return;
     }
-
+    
     const tempArray = this.selectedFiles;
     this.selectedFiles = [];
-
+    
     for (let i = 0; i < tempArray.length; i++) {
       if (i !== index) {
         this.selectedFiles.push(tempArray[i]);
