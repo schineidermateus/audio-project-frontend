@@ -54,4 +54,21 @@ O roteamento é centralizado no arquivo `app.routes.ts`, definindo o mapeamento 
 
 ---
 
+## 🐳 Execução via Docker
+
+O frontend é totalmente **containerizado**.  
+O **Dockerfile** instala o **Angular** e as suas dependências automaticamente.
+
+```bash
+docker audio-project-frontend -t audio-project-frontend .
+docker run -p 4200:4200 audio-project-frontend
+````
+
+Caso queira executar o projeto utilizando o servidor nativo do Angular, use:
+```bash
+  ng serve
+```
+
+---
+
 📄 **Licença:** Livre para uso educacional e de pesquisa.
