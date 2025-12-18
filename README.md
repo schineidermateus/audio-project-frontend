@@ -66,7 +66,7 @@ docker run -p 4200:4200 audio-project-frontend
 
 Caso queira executar o projeto utilizando o servidor nativo do Angular, use:
 ```bash
-  ng serve
+ng serve
 ```
 
 ---
